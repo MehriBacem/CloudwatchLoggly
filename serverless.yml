@@ -1,0 +1,60 @@
+service: correlate-functions
+awsKmsKeyArn: <awsKmsKeyArn>
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "SNS:Publish"
+      Resource: "<arnSnsTopic>"
+
+functions:
+  api-a:
+    handler: api-a.handler
+    environment:
+      snsTopic: '<arnSnsTopic>'
+    events:
+      - http:
+          path: /api-a
+          method: get
+
+  sns:
+    handler: snsFunction.handler
+    events:
+      - sns: <arnSnsTopic>
+
+  serverlessloggly:
+    handler: serverlessloggly.handler
+    role: <arnRole>
+    awsKmsKeyArn: <awsKmsKeyArn>
+    environment:
+      kmsEncryptedCustomerToken: AQICAHhffTm0B1Rm9Gw8QObvh4cFfzCt0C/oABmo+r7FFp3+MwEGKRen0ACFZEwRhJXkVzZbAAAAgzCBgAYJKoZIhvcNAQcGoHMwcQIBADBsBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDJgLVvFhHXDU8uW57gIBEIA/uOBh6oG820Wo2p5BPio+AMYT5DP0hQXdbf8nHYHHSNbW+oWhTR26li3U2z4RZOrxqIXC4w1bzXwqzLxko5yN
+      logglyTags: CloudWatch2Loggly
+      logglyHostName: logs-01.loggly.com
+    tags:
+      lambda-console:blueprint: cloudwatch-logs-to-loggly
+
+    events:
+      - cloudwatchLog: '/aws/lambda/correlate-functions-dev-api-a'
+  serverlessloggly1:
+    handler: serverlessloggly.handler
+    role: <arnRole>
+    awsKmsKeyArn: <awsKmsKeyArn>
+    environment:
+      kmsEncryptedCustomerToken: AQICAHhffTm0B1Rm9Gw8QObvh4cFfzCt0C/oABmo+r7FFp3+MwEGKRen0ACFZEwRhJXkVzZbAAAAgzCBgAYJKoZIhvcNAQcGoHMwcQIBADBsBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDJgLVvFhHXDU8uW57gIBEIA/uOBh6oG820Wo2p5BPio+AMYT5DP0hQXdbf8nHYHHSNbW+oWhTR26li3U2z4RZOrxqIXC4w1bzXwqzLxko5yN
+      logglyTags: CloudWatch2Loggly
+      logglyHostName: logs-01.loggly.com
+    tags:
+      lambda-console:blueprint: cloudwatch-logs-to-loggly
+
+    events:
+      - cloudwatchLog: '/aws/lambda/correlate-functions-dev-sns'
+
+
+
+
+
+

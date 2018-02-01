@@ -31,7 +31,7 @@ functions:
     role: <arnRole>
     awsKmsKeyArn: <awsKmsKeyArn>
     environment:
-      kmsEncryptedCustomerToken: AQICAHhffTm0B1Rm9Gw8QObvh4cFfzCt0C/oABmo+r7FFp3+MwEGKRen0ACFZEwRhJXkVzZbAAAAgzCBgAYJKoZIhvcNAQcGoHMwcQIBADBsBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDJgLVvFhHXDU8uW57gIBEIA/uOBh6oG820Wo2p5BPio+AMYT5DP0hQXdbf8nHYHHSNbW+oWhTR26li3U2z4RZOrxqIXC4w1bzXwqzLxko5yN
+      kmsEncryptedCustomerToken: Token
       logglyTags: CloudWatch2Loggly
       logglyHostName: logs-01.loggly.com
     tags:
@@ -44,7 +44,7 @@ functions:
     role: <arnRole>
     awsKmsKeyArn: <awsKmsKeyArn>
     environment:
-      kmsEncryptedCustomerToken: AQICAHhffTm0B1Rm9Gw8QObvh4cFfzCt0C/oABmo+r7FFp3+MwEGKRen0ACFZEwRhJXkVzZbAAAAgzCBgAYJKoZIhvcNAQcGoHMwcQIBADBsBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDJgLVvFhHXDU8uW57gIBEIA/uOBh6oG820Wo2p5BPio+AMYT5DP0hQXdbf8nHYHHSNbW+oWhTR26li3U2z4RZOrxqIXC4w1bzXwqzLxko5yN
+      kmsEncryptedCustomerToken: Token
       logglyTags: CloudWatch2Loggly
       logglyHostName: logs-01.loggly.com
     tags:
